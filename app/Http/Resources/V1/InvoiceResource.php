@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Resources\V1;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+
+class InvoiceResource  extends JsonResource
+{
+    /**
+     * Transform the resource collection into an array.
+     *
+     * @return array<int|string, mixed>
+     */
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id ,
+            'customerId' => $this->customer_id ,
+            'amount' => $this->amount ,
+            'status' => $this->email ,
+            'billedData' => $this->billed_date ,
+            'paidData' => $this->paid_date ,
+
+        ];
+    }
+}
