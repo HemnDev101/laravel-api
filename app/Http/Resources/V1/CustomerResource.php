@@ -23,7 +23,8 @@ class CustomerResource extends JsonResource
             'city' => $this->city ,
             'state' => $this->state ,
             'postal_code' => $this->postal_code ,
-
+            // search in ChatGPT
+            'invoices' => InvoiceResource::collection($this->whenLoaded('invoices')), // This line used for retrieve data from invoices to CustomerResource when I called
         ];
     }
 }
