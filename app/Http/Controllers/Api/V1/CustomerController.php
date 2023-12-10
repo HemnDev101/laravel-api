@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Filters\V1\CustomerFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
@@ -19,16 +20,17 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $filter = new CustomerQuery() ;
+        $filter = new CustomerFilter() ;
         $queryItems = $filter -> transform($request) ; // [['column' , 'operator' , 'value' ]]
         if(count($queryItems) == 0 ){
             return new CustomerCollection(Customer::paginate());
         }else{
-            return new CustomerCollection(Customer::where($queryItems)->paginate());  // http://127.0.0.1:8000/api/v1/customers?postalCode[gt]=30000
+//            return new CustomerCollection(Customer::where($queryItems)->paginate());
+            // http://127.0.0.1:8000/api/v1/customers?postalCode[gt]=30000
+
+            $customers = Customer::where($queryItems)->paginate() ;
+            return new CustomerCollection($customers->appends($request->query())); //!!Important used for stilling query of filters when you navigate to other links of pagination
         }
-//        $query = Customer::query();
-//
-//         return new CustomerCollection(Customer::paginate());
 
     }
 

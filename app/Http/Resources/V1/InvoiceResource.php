@@ -19,7 +19,7 @@ class InvoiceResource  extends JsonResource
             'id' => $this->id ,
             'customerId' => $this->customer_id ,
             'amount' => $this->amount ,
-            'status' => $this->email ,
+            'status' => $this->status ,
             'billedData' => $this->billed_date ,
             'paidData' => $this->paid_date ,
 
