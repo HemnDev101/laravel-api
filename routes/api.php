@@ -26,4 +26,5 @@ Route::group(['prefix' => 'v1'     ], function (){
     Route::resource('/invoices' ,  InvoiceController::class ) ;
     Route::resource('/customers' ,  CustomerController::class) ;
 
+    Route::post('invoices/bulk' , [InvoiceController::class , 'bulkStore']);
 });

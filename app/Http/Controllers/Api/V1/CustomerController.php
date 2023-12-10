@@ -48,6 +48,8 @@ class CustomerController extends Controller
      return new CustomerResource(Customer::create($request->all()));
     }
 
+
+
     /**
      * Display the specified resource.
      */
