@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // api/v1/customer
-Route::group(['prefix' => 'v1'     ], function (){
+Route::group(['prefix' => 'v1'  , 'middleware' => 'auth:sanctum'    ], function (){
     Route::resource('/invoices' ,  InvoiceController::class ) ;
     Route::resource('/customers' ,  CustomerController::class) ;
 
